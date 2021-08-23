@@ -2,8 +2,8 @@
 <div>
   <img alt="Vue logo" src="./assets/logo.png" />
   <!-- <HelloWorld msg="Hello Vue 3 + Vite" /> -->
-  <!-- <router-link :to="{ name: 'about'}">关于</router-link>&nbsp;
-  <router-link :to="{ name: 'home'}">首页</router-link> -->
+  <router-link :to="{ name: 'about'}">关于</router-link>&nbsp;
+  <router-link :to="{ name: 'home'}">首页</router-link>
   <router-view></router-view>
 </div>
   
