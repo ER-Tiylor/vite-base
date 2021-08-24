@@ -27,5 +27,11 @@ export default defineConfig({
   server: {
     host: '0.0.0.0'
   },
-  
+  css:{
+    preprocessorOptions: {
+      sass: {
+        additionalData: '@import "./src/style/base.sass"' // 添加公共样式
+      }
+    }
+  }
 })

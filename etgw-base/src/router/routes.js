@@ -13,6 +13,11 @@ export const routes = [
     }],
     component:() => import("@/views/home/home.vue")
   },
+  {
+    path:'/selectPage',
+    name:'selectPage',
+    component:() => import("@/views/selectPage/selectPage.vue")
+  },
   // {
   //   path:'/product',
   //   name:'product',
