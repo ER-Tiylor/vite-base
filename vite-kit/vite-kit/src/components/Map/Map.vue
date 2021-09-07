@@ -6,21 +6,30 @@ import {onMounted,toRefs} from "vue";
 import AMapLoader from "@amap/amap-jsapi-loader";
 
 export default({
+	data(){
+		return{
+			color: "red",
+		};
+	},
 	props:{
 		position:{
 			type:Array
 		},
 		height:{
 			type:String,
-			default: "300"
+			default: "400px"
 		},
 		width:{
 			type: String,
-			default: "400"
+			default: "600px"
 		}
 	},
 	setup(props) {
 		const {position} = toRefs(props);
+		// const style = computed(()=>{
+		// 	return "";
+		// });
+		console.log(position.value);
 		onMounted(()=>{
 			AMapLoader.load({
 				"key": "9866f8b589d15c14beb78cd54dad0c37",              // 申请好的Web端开发者Key，首次调用 load 时必填
@@ -35,13 +44,13 @@ export default({
 				},
 			}).then((AMap)=>{
 				let map = new AMap.Map("map-container",{
-					center:position.length>0?position: [108.93425, 34.23053],
+					center:position.value.length>0?position.value: [108.93425, 34.23053],
 					// viewMode:"3D",//使用3D视图
-					zoom: 13,//设置地图级别范围
+					zoom: 16,//设置地图级别范围
 				});
 				var marker = new AMap.Marker({
 					// content: "目标位置名称",
-					position:[108.93425, 34.23053],//位置
+					position:position.value.length>0?position.value: [108.93425, 34.23053],//位置
 				});
 				map.add(marker);//添加到地图
 				//实时路况图层
@@ -56,9 +65,9 @@ export default({
 	},
 });
 </script>
-<style lang="scss" scoped>
+<style lang="scss" scoped >
 #map-container{
-  width: 100%;
-  height: 300px;
+  width: v-bind(width);
+  height: v-bind(height);
 }
 </style>

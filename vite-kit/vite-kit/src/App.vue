@@ -3,13 +3,13 @@
 <div>
   <img alt="Vue logo" src="./assets/logo.png" />
   <HelloWorld msg="Hello Vue 3 + Vite" />
-  <Map/>
+  <Map width="100%" height="500px" :position="[108.90773,34.239262]"/>
 </div>
   
 </template>
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
-import Map from "./components/Map.vue";
+import Map from "./components/Map/Map.vue"; 
 export default({
 	components:{HelloWorld,Map},
 	setup() {
