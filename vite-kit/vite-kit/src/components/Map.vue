@@ -9,6 +9,14 @@ export default({
 	props:{
 		position:{
 			type:Array
+		},
+		height:{
+			type:String,
+			default: "300"
+		},
+		width:{
+			type: String,
+			default: "400"
 		}
 	},
 	setup(props) {
@@ -27,11 +35,12 @@ export default({
 				},
 			}).then((AMap)=>{
 				let map = new AMap.Map("map-container",{
-					center:[108.93425, 34.23053],
+					center:position.length>0?position: [108.93425, 34.23053],
 					// viewMode:"3D",//使用3D视图
 					zoom: 13,//设置地图级别范围
 				});
 				var marker = new AMap.Marker({
+					// content: "目标位置名称",
 					position:[108.93425, 34.23053],//位置
 				});
 				map.add(marker);//添加到地图
@@ -49,7 +58,7 @@ export default({
 </script>
 <style lang="scss" scoped>
 #map-container{
-  width: 400px;
+  width: 100%;
   height: 300px;
 }
 </style>
