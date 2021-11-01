@@ -22,13 +22,14 @@ export default({
 		width:{
 			type: String,
 			default: "600px"
+		},
+		locationName:{
+			type: String,
+			default: ""
 		}
 	},
 	setup(props) {
-		const {position} = toRefs(props);
-		// const style = computed(()=>{
-		// 	return "";
-		// });
+		const {position,locationName} = toRefs(props);
 		console.log(position.value);
 		onMounted(()=>{
 			AMapLoader.load({
@@ -52,12 +53,14 @@ export default({
 					// content: "目标位置名称",
 					position:position.value.length>0?position.value: [108.93425, 34.23053],//位置
 				});
+				if(locationName.value){
+					marker.setLabel({
+						direction: "top",
+						offset: new AMap.Pixel(0, 0),  //设置文本标注偏移量
+						content: `<div class='info'>${locationName.value}</div>`, //设置文本标注内容
+					});
+				}
 				map.add(marker);//添加到地图
-				//实时路况图层
-				// var trafficLayer = new AMap.TileLayer.Traffic({
-				// 	zIndex: 10
-				// });
-				// map.add(trafficLayer);//添加图层到地图
 			}).catch(e => {
 				console.log(e);
 			});
@@ -69,5 +72,37 @@ export default({
 #map-container{
   width: v-bind(width);
   height: v-bind(height);
+  :deep(.amap-marker-label){
+    border: none;
+    padding: 0;
+    background: transparent;
+  }
+  :deep(.info){
+    padding: 0 20px;
+    height: 36px;
+    line-height: 36px;
+    transform: translateY(-12px);
+    border-radius: 5px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-bottom: transparent;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
+    &:after{
+      position: absolute;
+      content:'';
+      top: 35px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      font-size: 0;
+      display: block;
+      border-width: 10px;
+      border-color: #FFF transparent transparent transparent;
+      border-style: solid dashed dashed dashed;
+      // filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, .2));
+    }
+  }
 }
 </style>
