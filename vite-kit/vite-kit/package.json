@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@amap/amap-jsapi-loader": "^1.0.1",
+    "pdfjs-dist": "^2.10.377",
     "sass": "^1.39.0",
     "vue": "^3.2.6"
   },

@@ -8,14 +8,24 @@
 `` npm i ``
 ## 使用示例
 ``` javascript
-<Map width="100%" height="500px" :position="[108.90773,34.239262]"/>
+<Map width="100%" height="500px" :position="[108.90773,34.239262]" locationName="位置名称"/>
 ```
 ## Attributes
+
+|      |      |      |
+| ---- | ---- | ---- |
+|      |      |      |
+|      |      |      |
+|      |      |      |
+
 
 
 ## Events
 
+
+
 ## 参考api手册
+
 https://lbs.amap.com/api/jsapi-v2/summary
 
 ## ! 注意
